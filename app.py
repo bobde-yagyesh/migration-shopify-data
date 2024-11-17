@@ -36,6 +36,20 @@ def parse_images(image_str):
         images.append({'url': url, 'alt': alt_text})
     return images
 
+def get_attribute_columns(df):
+    """Get all meta:attribute_pa columns that have children with values."""
+    attribute_cols = []
+    meta_cols = [col for col in df.columns if col.startswith('meta:attribute_pa_')]
+    
+    for col in meta_cols:
+        # Check if any children have values for this attribute
+        children_df = df[~pd.isna(df['post_parent'])]
+        if not children_df.empty and col in children_df.columns:
+            if children_df[col].notna().any():
+                attribute_cols.append(col.replace('meta:attribute_pa_', ''))
+    
+    return sorted(attribute_cols)
+
 def get_option_values(children_df, option_name):
     col_name = f'meta:attribute_pa_{option_name}'
     values = []
@@ -47,7 +61,7 @@ def get_option_values(children_df, option_name):
 
 def create_base_row(parent_row):
     return {
-        'Handle': str(parent_row['ID']),
+        'Handle': parent_row['post_title'],  # Changed from ID to post_title
         'Title': parent_row['post_title'],
         'Body (HTML)': parent_row['post_excerpt'] if not pd.isna(parent_row['post_excerpt']) else '',
         'Published': str(parent_row['post_status'] == 'publish').lower(),
@@ -55,10 +69,13 @@ def create_base_row(parent_row):
         'Variant Compare At Price': parent_row['sale_price'] if not pd.isna(parent_row['sale_price']) else ''
     }
 
-def create_variant_rows(parent_row, children_df):
-    size_values = get_option_values(children_df, 'sizes')
-    texture_values = get_option_values(children_df, 'texture')
-    thickness_values = get_option_values(children_df, 'thickness')
+def create_variant_rows(parent_row, children_df, attribute_cols):
+    # Get values for all available attributes
+    attribute_values = {}
+    for attr in attribute_cols:
+        values = get_option_values(children_df, attr)
+        if values:
+            attribute_values[attr] = values
     
     images = parse_images(parent_row['images'])
     if not images:
@@ -67,52 +84,37 @@ def create_variant_rows(parent_row, children_df):
     rows = []
     base_row = create_base_row(parent_row)
     
+    # Create first row with first image
     first_row = base_row.copy()
     if images[0]['url']:
         first_row['Image Src'] = images[0]['url']
         first_row['Image Alt Text'] = images[0]['alt']
         first_row['Image Position'] = 1
     
+    # Add options to first row
     option_count = 1
-    if size_values:
-        first_row[f'Option{option_count} Name'] = 'Size'
-        first_row[f'Option{option_count} Value'] = size_values[0]
+    for attr_name, values in attribute_values.items():
+        first_row[f'Option{option_count} Name'] = attr_name.capitalize()
+        first_row[f'Option{option_count} Value'] = values[0]
         option_count += 1
-        
-    if texture_values:
-        first_row[f'Option{option_count} Name'] = 'Texture'
-        first_row[f'Option{option_count} Value'] = texture_values[0]
-        option_count += 1
-        
-    if thickness_values:
-        first_row[f'Option{option_count} Name'] = 'Thickness'
-        first_row[f'Option{option_count} Value'] = thickness_values[0]
     
     rows.append(first_row)
     
+    # Add additional image rows
     for idx, img in enumerate(images[1:], 2):
         img_row = {
-            'Handle': str(parent_row['ID']),
+            'Handle': parent_row['post_title'],  # Changed from ID to post_title
             'Image Src': img['url'],
-            'Image Alt Text': img['alt'], 
+            'Image Alt Text': img['alt'],
             'Image Position': idx
         }
         rows.append(img_row)
     
-    if size_values or texture_values or thickness_values:
-        options = []
-        option_names = []
+    # Create variant rows
+    if attribute_values:
+        options = list(attribute_values.values())
+        option_names = [name.capitalize() for name in attribute_values.keys()]
         
-        if size_values:
-            options.append(size_values)
-            option_names.append('Size')
-        if texture_values:
-            options.append(texture_values)
-            option_names.append('Texture')
-        if thickness_values:
-            options.append(thickness_values)
-            option_names.append('Thickness')
-            
         for combination in product(*options):
             if combination == tuple([v[0] for v in options]):
                 continue
@@ -129,6 +131,7 @@ def create_variant_rows(parent_row, children_df):
 
 def convert_wordpress_to_shopify(df):
     parent_products = df[pd.isna(df['post_parent'])]
+    attribute_cols = get_attribute_columns(df)
     
     output_rows = []
     progress_bar = st.progress(0)
@@ -136,7 +139,7 @@ def convert_wordpress_to_shopify(df):
     
     for idx, (_, parent_row) in enumerate(parent_products.iterrows()):
         children = df[df['post_parent'] == parent_row['ID']]
-        product_rows = create_variant_rows(parent_row, children)
+        product_rows = create_variant_rows(parent_row, children, attribute_cols)
         output_rows.extend(product_rows)
         
         # Update progress bar
@@ -156,12 +159,15 @@ def main():
             st.info("Processing uploaded file...")
             df = pd.read_csv(uploaded_file)
             
-            # Show input data preview
-            st.subheader("Input Data Preview")
-            st.dataframe(df.head())
+            # Show input data preview in an expander with scrollable container
+            with st.expander("View Input Data Preview", expanded=True):
+                st.dataframe(df, height=400)
             
             if st.button("Convert to Shopify Format"):
                 output_df = convert_wordpress_to_shopify(df)
+                
+                # Store output_df in session state to persist it
+                st.session_state['output_df'] = output_df
                 
                 # Show statistics
                 st.subheader("Conversion Statistics")
@@ -179,10 +185,8 @@ def main():
                 with col3:
                     st.metric("Average Rows per Product", f"{avg_variants:.1f}")
                 
-                # Show output preview
-                # Add detailed product breakdown
-                with st.expander("View Detailed Product Breakdown"):
-                    # Get counts of variants and images per product
+                # Show detailed product breakdown in expander
+                with st.expander("View Detailed Product Breakdown", expanded=True):
                     product_breakdown = []
                     for handle in output_df['Handle'].unique():
                         product_rows = output_df[output_df['Handle'] == handle]
@@ -210,9 +214,9 @@ def main():
                         height=400
                     )
                 
-                # Show output preview
-                st.subheader("Output Preview")
-                st.dataframe(output_df.head())
+                # Show output preview in expander
+                with st.expander("View Output Preview", expanded=True):
+                    st.dataframe(output_df, height=400)
                 
                 # Create download button
                 timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -231,6 +235,12 @@ def main():
         except Exception as e:
             st.error(f"An error occurred: {str(e)}")
             st.error("Please make sure your CSV file has the correct format and required columns.")
+    
+    # Show persisted output preview if it exists
+    elif 'output_df' in st.session_state:
+        st.subheader("Previous Conversion Output")
+        with st.expander("View Output Preview", expanded=True):
+            st.dataframe(st.session_state['output_df'], height=400)
 
 if __name__ == "__main__":
     main()
