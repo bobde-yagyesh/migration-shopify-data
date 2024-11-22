@@ -36,6 +36,25 @@ def parse_images(image_str):
         images.append({'url': url, 'alt': alt_text})
     return images
 
+def extract_tags(category_str):
+    """Extract tags from the tax:product_cat column."""
+    if pd.isna(category_str):
+        return ''
+    
+    tags = []
+    # Split by pipe to handle multiple categories
+    for category in category_str.split('|'):
+        # Get the part after the last '>' if it exists
+        parts = category.split('>')
+        if parts:
+            # Strip whitespace and add to tags
+            tag = parts[-1].strip()
+            if tag:
+                tags.append(tag)
+    
+    # Return unique tags joined by comma
+    return ', '.join(sorted(set(tags)))
+
 def get_attribute_columns(df):
     """Get all meta:attribute_pa columns that have children with values."""
     attribute_cols = []
@@ -61,12 +80,13 @@ def get_option_values(children_df, option_name):
 
 def create_base_row(parent_row):
     return {
-        'Handle': parent_row['post_title'],  # Changed from ID to post_title
+        'Handle': parent_row['post_title'],
         'Title': parent_row['post_title'],
         'Body (HTML)': parent_row['post_excerpt'] if not pd.isna(parent_row['post_excerpt']) else '',
         'Published': str(parent_row['post_status'] == 'publish').lower(),
         'Variant Price': parent_row['regular_price'] if not pd.isna(parent_row['regular_price']) else '',
-        'Variant Compare At Price': parent_row['sale_price'] if not pd.isna(parent_row['sale_price']) else ''
+        'Variant Compare At Price': parent_row['sale_price'] if not pd.isna(parent_row['sale_price']) else '',
+        'Tags': extract_tags(parent_row.get('tax:product_cat', ''))  # Add tags from product categories
     }
 
 def create_variant_rows(parent_row, children_df, attribute_cols):
@@ -103,10 +123,11 @@ def create_variant_rows(parent_row, children_df, attribute_cols):
     # Add additional image rows
     for idx, img in enumerate(images[1:], 2):
         img_row = {
-            'Handle': parent_row['post_title'],  # Changed from ID to post_title
+            'Handle': parent_row['post_title'],
             'Image Src': img['url'],
             'Image Alt Text': img['alt'],
-            'Image Position': idx
+            'Image Position': idx,
+            'Tags': base_row['Tags']  # Maintain tags in image rows
         }
         rows.append(img_row)
     
@@ -180,10 +201,10 @@ def main():
                 
                 with col1:
                     st.metric("Total Unique Products", unique_products)
-                with col2:
-                    st.metric("Total Rows (incl. variants)", total_rows)
-                with col3:
-                    st.metric("Average Rows per Product", f"{avg_variants:.1f}")
+                # with col2:
+                #     st.metric("Total Rows (incl. variants)", total_rows)
+                # with col3:
+                #     st.metric("Average Rows per Product", f"{avg_variants:.1f}")
                 
                 # Show detailed product breakdown in expander
                 with st.expander("View Detailed Product Breakdown", expanded=True):
@@ -198,7 +219,8 @@ def main():
                             'Title': product_rows['Title'].iloc[0] if 'Title' in product_rows else 'N/A',
                             'Variants': variant_rows,
                             'Images': image_rows,
-                            'Total Rows': len(product_rows)
+                            'Total Rows': len(product_rows),
+                            'Tags': product_rows['Tags'].iloc[0] if 'Tags' in product_rows else ''
                         })
                     
                     breakdown_df = pd.DataFrame(product_breakdown)
@@ -209,7 +231,8 @@ def main():
                             'Title': 'Product Title',
                             'Variants': 'Number of Variants',
                             'Images': 'Number of Images',
-                            'Total Rows': 'Total Rows'
+                            'Total Rows': 'Total Rows',
+                            'Tags': 'Tags'
                         },
                         height=400
                     )
