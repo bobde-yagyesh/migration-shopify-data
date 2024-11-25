@@ -16,3 +16,34 @@ This project aims to provide a solution for converting WordPress product data to
 - Numpy
 - Streamlit
 
+
+## SCRIPTS USAGE
+
+<table>
+<tr>
+<th>Sno.</th>
+<th>Input File</th>
+<th>Output File</th>
+<th>Description</th>
+<th>Path</th>
+</tr>
+<tr>
+<td>1</td>
+<td>Wordpress Exported File Csv</td>
+<td>Shopify Importable File Csv</td>
+<td>Converts wordpress data to Shopify format with variants.</td>
+<td>./scripts/old/app.py</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Wordpress Exported File Csv</td>
+<td>Shopify Importable File Csv</td>
+<td>Converts wordpress data to Shopify format with variant images. BUG: Variants not propertly handled</td>
+<td>.scripts/old/new.py</td>
+<td>3</td>
+<td>Wordpress Exported File Csv</td>
+<td>Shopify Importable File Csv</td>
+<td>Converts wordpress data to Shopify format with variant images and handles the cases if variant images are not present. Handles variant properly</td>
+<td>./optimized_wordpress_to_shopify.py</td>
+</tr>
+</table>
