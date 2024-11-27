@@ -46,4 +46,11 @@ This project aims to provide a solution for converting WordPress product data to
 <td>Converts wordpress data to Shopify format with variant images and handles the cases if variant images are not present. Handles variant properly</td>
 <td>./optimized_wordpress_to_shopify.py</td>
 </tr>
+<tr>
+<td>4</td>
+<td>Shopify Output Csv</td>
+<td>Tag Wise Analysis/Stats csv</td>
+<td>Generates Tag Wise Analysis/Stats, Product stats, variant stats, blank image stats</td>
+<td>./tooling_ouput.py</td>
+</tr>
 </table>
