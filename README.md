@@ -43,8 +43,8 @@ This project aims to provide a solution for converting WordPress product data to
 <td>3</td>
 <td>Wordpress Exported File Csv</td>
 <td>Shopify Importable File Csv</td>
-<td>Converts wordpress data to Shopify format with variant images and handles the cases if variant images are not present. Handles variant properly</td>
-<td>./optimized_wordpress_to_shopify.py</td>
+<td>Converts wordpress data to Shopify format with variant images and handles the cases if variant images are not present. Handles variant properly. Add alt text if color option is present</td>
+<td>./optimized_wordpress_to_shopify_v1.py</td>
 </tr>
 <tr>
 <td>4</td>
@@ -52,5 +52,12 @@ This project aims to provide a solution for converting WordPress product data to
 <td>Tag Wise Analysis/Stats csv</td>
 <td>Generates Tag Wise Analysis/Stats, Product stats, variant stats, blank image stats</td>
 <td>./tooling_ouput.py</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Shopify Output Csv</td>
+<td>Wordpress Convert to shopify</td>
+<td>It is improved from v1 because it provided all meta fields like brand, fabric, texture, material, thickness etc</td>
+<td>./optimized_wordpress_to_shopify_v2.py</td>
 </tr>
 </table>

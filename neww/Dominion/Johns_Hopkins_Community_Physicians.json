@@ -1,0 +1,71 @@
+[
+  {
+    "id_": "22275dca-7947-44b8-a859-7663cfa15a4d",
+    "embedding": null,
+    "metadata": {
+      "page_number": 1,
+      "tenant_name": "JHCP",
+      "date": "",
+      "filename": "Signage Approval Letter",
+      "final_text": "# STEWART INVESTMENT PARTNERS\n\nJune 15, 2021\n\nDepartment of Planning and Zoning\n\nZoning Administration Division\n\nZoning Permit Review Branch\n\n12055 Government Center Parkway, Suite 250\n\nFairfax, VA 22035-5508\n\n**Re: SIP/CREF 6849 Old Dominion, LLC**\n\n6849 Old Dominion Drive\n\nMcLean, VA 22101\n\nPlease be advised that SIP/CREF 6849 Old Dominion, LLC (Landlord) has approved the drawings (attached) for Johns Hopkins Medicine dated April 12, 2021 by Jack Stone Sign Co., Inc. Landlord authorizes the securing of necessary permits for the installation of the sign at the above referenced building.\n\nShould you have any questions, I can be reached at (202) 270-1795 or msimmons@stewartinvest.com.\n\nSincerely,\n\n[signature]\n\nMike Simmons  \nPrincipal, Stewart Investment Partners  \nAuthorized Representative, SIP/CREF 6849 Old Dominion, LLC\n\n7201 Wisconsin Avenue, Suite 505 | Bethesda, MD 20814 | www.stewartinvest.com",
+      "file_path": "Res/Old_Dominion/Johns_Hopkins_Community_Physicians/JHCP - Signage Approval Letter.pdf",
+      "file_name": "JHCP - Signage Approval Letter.pdf"
+    },
+    "excluded_embed_metadata_keys": [],
+    "excluded_llm_metadata_keys": [],
+    "relationships": {},
+    "text": "# INVESTMENT PARTNERS\n\nJune 15, 2021\n\nDepartment of Planning and Zoning\n\nZoning Administration Division\n\nZoning Permit Review Branch\n\n12055 Government Center Parkway, Suite 250\n\nFairfax, VA 22035-5508\n\nRe: SIP/CREF 6849 Old Dominion, LLC\n\n6849 Old Dominion Drive\n\nMcLean, VA 22101\n\nPlease be advised that SIP/CREF 6849 Old Dominion, LLC (Landlord) has approved the drawings (attached) for Johns Hopkins Medicine dated April 12, 2021 by Jack Stone Sign Co., Inc. Landlord authorizes the securing of necessary permits for the installation of the sign at the above referenced building.\n\nShould you have any questions, I can be reached at (202) 270-1795 or msimmons@stewartinvest.com.\n\nSincerely,\n\nMike Simmons\n\nPrincipal, Stewart Investment Partners\n\nAuthorized Representative, SIP/CREF 6849 Old Dominion, LLC\n\n7201 Wisconsin Avenue, Suite 505 | Bethesda, MD 20814 | www.stewartinvest.com",
+    "mimetype": "text/plain",
+    "start_char_idx": null,
+    "end_char_idx": null,
+    "text_template": "{metadata_str}\n\n{content}",
+    "metadata_template": "{key}: {value}",
+    "metadata_seperator": "\n"
+  },
+  {
+    "id_": "e78194c7-b827-4443-806a-60d35b03e2b1",
+    "embedding": null,
+    "metadata": {
+      "page_number": 2,
+      "tenant_name": "JHCP",
+      "date": "",
+      "filename": "Signage Approval Letter",
+      "final_text": "# STEWART INVESTMENT PARTNERS\n\n![Yellow in Logo to be Opaque](#)\n\n# Johns Hopkins Medicine\n\nDirect Mount LED face lit channel letters w/photocell - vault on back of wall to contain wiring & power supply\n\n104.5 sq ft\n\n---\n\n### L.E.D. CHANNEL LETTER SECTION (TYP) - REMOTE NTS\n\n* ALL ELECTRICAL COMPONENTS UL LISTED\n* 0.063 ALUM. RETURN, PAINTED WHITE\n* 1\" WHITE TRIMCAP\n* 1/8\" THK. #7328 WHITE ACRYLIC FACES WITH TRANSLUCENT VINYL\n* WHITE (6500K) NCLEDS\n* WEEP HOLES AS REQD\n* DRILL FACE & PRECAST\n* 1/4\" BOLT & DS EXP ANCHORS\n* WIRING BACK TO CIRCUIT IN CONDUIT TO REMOTE POWER SOURCE IN METAL WALL VAULT ON BACK OF 0.063 ALUM. CHANNEL LETTER BACK\n\nThis sign is intended to be installed in accordance with the requirements of Article 600 of the current National Electrical Code and/or other applicable local codes. This includes proper grounding and bonding of the sign.\n\nSIGN IS WIRED FOR 120 VOLTS UNLESS OTHERWISE SPECIFIED\n\n---\n\n![Building Image](#)\n\n---\n\nJack Stone Signs | JACKSTONESIGNS.COM\n\n3131 Penney Drive, Landover, MD 20785 / phone (301) 322-3323 / fax (301) 322-6407\n\n---\n\nCUST: Johns Hopkins Medicine\nDWG. NO: 053015\nDATE: 4/15/15\nSCALE: 1/4\" = 1'\nJOB: Medical Center\nLOCATION: Baltimore, MD\nSIGN TYPE: Building Sign\nCONTACT: Rebecca\n\n---\n\n7201 Wisconsin Avenue, Suite 505 | Bethesda, MD 20814 | www.stewartinvest.com",
+      "file_path": "Res/Old_Dominion/Johns_Hopkins_Community_Physicians/JHCP - Signage Approval Letter.pdf",
+      "file_name": "JHCP - Signage Approval Letter.pdf"
+    },
+    "excluded_embed_metadata_keys": [],
+    "excluded_llm_metadata_keys": [],
+    "relationships": {},
+    "text": "# INVESTMENT PARTNERS\n\n# YELLOWIN LOGO TO BE OPAQUE\n\nJohns Hopkins Medicine:\n\nLED. CN_.LTR SECTION\n\n* ALL ELECTRICAL COMPONENTS a {TYP} - UL USTEDREMOTE NTS\n\n053 AUM.RETURNS PID.WETE\n\n1\" WHITE TRIMCAP\n\n1/8\" THO. \u00a37 328 WHITE ACRYLIC FACES WITH RANSLUCEN VINYL\n\nWHE(X\u00a3CO356500kNCLEDS\n\nWEEPHOLESAS REQD\n\nDG. FACALE \u00ab PRECAST\n\n1/@ BOL & DS EXP ANCHORS\n\nWRING BEC. CRCUTIN UDUITTE TO\n\nREMOTE POWER SOURCE INMETAL WALLVAULT ON SACK OF 063 ALUM. CNL LETER BACK\n\nArticle 600 of the current National Electrical Code and/or other applicable codes. This sign is includes proper grounding and ded to be ed in ax bonding with the requirements of the sign. of local SIGNiSWIREDFOR120VOLTS UNLESS OTHERWISE SPECIFIEDOM\n\nCUSTOMER Jobers Hopkins Medicine OWG.\n\nSCAENO.as noted CoCo JBD|teatetta!frusineegecton wththeeperfect created by onty Thecrasing Povoorstbews\n\nDORES 686 Old Comicon ace seonyeeverware Ironysraint the property cen enwatenenreenloggtay\n\nlack Stone Signs at Mclean Ae\n\nDESIGNERR4/ny2@RMB tree Compary.venenatis OTE This dexing\n\n3131 Penney Drive, Landover, MD.ae20785 / phone (901) 322-3323 / fax (901) 322-6407 ansvacneusy PLEWEAENAME WAZSign CONTACT\n\n7201 Wisconsin Avenue, Suite 505 | Bethesda, MD 20814 | www.stewartinvest.com",
+    "mimetype": "text/plain",
+    "start_char_idx": null,
+    "end_char_idx": null,
+    "text_template": "{metadata_str}\n\n{content}",
+    "metadata_template": "{key}: {value}",
+    "metadata_seperator": "\n"
+  },
+  {
+    "id_": "537df919-448d-41d1-b73c-ccf9cf8867c5",
+    "embedding": null,
+    "metadata": {
+      "page_number": 1,
+      "tenant_name": "JHCP",
+      "date": "",
+      "filename": "Commencement Execute",
+      "final_text": "# EXHIBIT D\n\n# COMMENCEMENT DATE CERTIFICATE\n\nThis Commencement Date Certificate is entered into by Landlord and Tenant pursuant to Section 2.02 of the deed of lease.\n\n1. DEFINITIONS. In this certificate the following terms have the meanings given to them:\n\n   (a) Landlord: SIP/CREF 6849 Old Dominion, LLC  \n   (b) Tenant: Johns Hopkins Community Physicians, Inc.  \n   (c) Lease: Deed of Lease dated March 30, 2021  \n   (d) Premises: Suite # 300  \n   (e) Building Address: 6849 Old Dominion Drive, McLean, VA 22101\n\n2. CONFIRMATION OF LEASE COMMENCEMENT: Landlord and Tenant confirm that notwithstanding anything in the Lease to the contrary, the Lease Commencement Date is **August 1, 2021**, and the Lease Expiration Date is **June 30, 2032**.\n\nLandlord and Tenant have executed this Commencement Date Certificate as of the dates set forth below.\n\nWITNESS:\n\n**LANDLORD:**\n\nSIP / CREF 6849 Old Dominion, LLC\n\nBy: ___________________________ (SEAL)  \n   , Manager  \nName: John H. Stewart, Manager  \nDate: 8/12/21\n\nWITNESS:\n\n**TENANT:**\n\nJohns Hopkins Community Physicians, Inc.\n\nBy: ___________________________ (SEAL)  \nName: Melissa Helicke, COO/VP  \nDate: August 10, 2021",
+      "file_path": "Res/Old_Dominion/Johns_Hopkins_Community_Physicians/JHCP - Commencement Executed.pdf",
+      "file_name": "JHCP - Commencement Executed.pdf"
+    },
+    "excluded_embed_metadata_keys": [],
+    "excluded_llm_metadata_keys": [],
+    "relationships": {},
+    "text": "# EXHIBIT D\n\n# COMMENCEMENT DATE CERTIFICATE\n\nThis Commencement Date Certificate is entered into by Landlord and Tenant pursuant to Section 2.02 of the deed of lease.\n\n# 1. DEFINITIONS\n\nIn this certificate the following terms have the meanings given to them:\n\n- (a) Landlord: SIP/CREF 6849 Old Dominion, LLC\n- (b) Tenant: Johns Hopkins Community Physicians, Inc.\n- (c) Lease: Deed of Lease dated March 30, 2021\n- (d) Premises: Suite # 300\n- (e) Building Address: 6849 Old Dominion Drive, McLean, VA 22101\n\n# 2. CONFIRMATION OF LEASE COMMENCEMENT\n\nLandlord and Tenant confirm that notwithstanding anything in the Lease to the contrary, the Lease Commencement Date is August 1, 2021, and the Lease Expiration Date is June 30, 2032.\n\nLandlord and Tenant have executed this Commencement Date Certificate as of the dates set forth below.\n\n# WITNESS:\n\n# LANDLORD:\n\nSIP / CREF 6849 Old Dominion, LLC\n\nBy: ___________________________ (SEAL)\n\nManager\n\nName: /olin 4 i frac\u2019, Manager\n\nDate: S/ 12 (24)\n\n# WITNESS:\n\n# TENANT:\n\nJohns Hopkins Community Physicians, Inc.\n\nBy: ___________________________\n\nMelissa Helicke, COO/VP\n\nName: ___________________________\n\nDate: August 10, 2021",
+    "mimetype": "text/plain",
+    "start_char_idx": null,
+    "end_char_idx": null,
+    "text_template": "{metadata_str}\n\n{content}",
+    "metadata_template": "{key}: {value}",
+    "metadata_seperator": "\n"
+  }
+]
